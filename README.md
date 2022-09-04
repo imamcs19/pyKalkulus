@@ -13,8 +13,11 @@ Screenshot Hasil Running contoh program untuk Kalkulus:
 Big Thanks to PythonAnywhere & for all Ref. Semoga Bermanfaat dan Sukses untuk Semua. :D
 
 [1]	Stewart, J. (2001). Kalkulus Jilid 1, terjemahan I Nyoman Susila dan Hendra Gunawan. Jakarta: Gramedia.
+
 [2] Varberg, D., Purcell, E., & Rigdon, S. (2010). Kalkulus: Edisi Kesembilan Jilid 1, terjemahan I Nyoman Susila. Jakarta: Erlangga.
+
 [3] Cholissodin, I., Safitri, T. M. M., Indriati, I., 2021, Calculus For Engineers, Scientists, Analyst & Researcher, Fakultas Ilmu Komputer, Universitas Brawijaya, Malang.
+
 [4]	..
 
 ----------- Free e-Books: Buku Ajar Saya ------------
