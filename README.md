@@ -16,7 +16,7 @@ Big Thanks to PythonAnywhere & for all Ref. Semoga Bermanfaat dan Sukses untuk S
 
 [2] Varberg, D., Purcell, E., & Rigdon, S. (2010). Kalkulus: Edisi Kesembilan Jilid 1, terjemahan I Nyoman Susila. Jakarta: Erlangga.
 
-[3] Cholissodin, I., Safitri, T. M. M., Indriati, I., 2021, Calculus For Engineers, Scientists, Analyst & Researcher, Fakultas Ilmu Komputer, Universitas Brawijaya, Malang.
+[3] Cholissodin, I., Safitri, T. M. M., Indriati, I., 2021, Calculus For Engineers, Fakultas Ilmu Komputer, Universitas Brawijaya, Malang.
 
 [4]	..
 
