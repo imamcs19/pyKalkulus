@@ -7,7 +7,7 @@ Dosen Pengampu:
 
 Screenshot Hasil Running contoh program untuk Kalkulus:
 ![Ngrok x Flask on Google Colab - Login & Register - BigDataApps Rev2.1](https://github.com/imamcs19/FGA-Big-Data-Using-Python-Filkom-x-Mipa-UB-2021/blob/main/Ngrok%20x%20Flask%20on%20Google%20Colab%20-%20Login%20%26%20Register%20-%20BigDataApps%20Rev2.1.png)
---> Web App untuk project Matematika Komputasi (MatKom) pada PythonAnywhere sbg Platform as a Service (PaaS) pada Teknologi Cloud
+--> Menu Login | Web App untuk project Kalkulus pada PythonAnywhere sbg Platform as a Service (PaaS) pada Teknologi Cloud
 
 
 Big Thanks to PythonAnywhere & for all Ref. Semoga Bermanfaat dan Sukses untuk Semua. :D
