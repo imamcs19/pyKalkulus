@@ -5,7 +5,7 @@ Fakultas Ilmu Komputer (Filkom), Universitas Brawijaya (UB) 2022.
 Dosen Pengampu: 
 1. Imam Cholissodin, S.Si., M.Kom. | email: imamcs@ub.ac.id | Filkom UB
 
-Screenshot Hasil Running contoh program untuk Kalkulus:
+Screenshot Hasil Running contoh program untuk Kalkulus ( https://bit.ly/3RtTVu5​ ):
 ![Cover - Buku Ajar Calculus for Engineering - Filkom UB](https://raw.githubusercontent.com/imamcs19/pyKalkulus/main/Cover%20-%20Buku%20Ajar%20Calculus%20for%20Engineering%20-%20Filkom%20UB.jpg)
 
 
