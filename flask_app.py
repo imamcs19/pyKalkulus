@@ -1,5 +1,5 @@
-# Koding Contoh MK Desain dan Analisis Algoritma (DAA) Semester Ganjil 2022/2023 Filkom UB
-# Rencana Pembelajaran MK DAA Semester Ganjil 2022/2023 Kelas H
+# Koding Contoh MK Kalkulus Semester Ganjil 2022/2023 Filkom UB
+# Rencana Pembelajaran MK Kalkulus Semester Ganjil 2022/2023 Kelas DEF
 # Fakultas Ilmu Komputer (Filkom), Universitas Brawijaya (UB) 2022.
 
 # Dosen Pengampu:
@@ -61,7 +61,7 @@ import uuid
 
 CORS(app, resources=r'/api/*')
 
-app.secret_key = 'filkomub2223^&&*(&^(filkom#BJH#G#VB#DAA99nDataPyICS_ap938255bnUB'
+app.secret_key = 'filkomub2223^&&*(&^(filkom#DEF#G#VB#Kalkulus99nDataPyICS_ap938255bnUB'
 
 # keterangan:
 # "#" adalah untuk comment
@@ -75,7 +75,7 @@ app.secret_key = 'filkomub2223^&&*(&^(filkom#BJH#G#VB#DAA99nDataPyICS_ap938255bn
 FrameWeb_atas = """
 {% extends "extends/base.html" %}
 {% block title %}
-    <title>Web App DAA Dgn Python</title>
+    <title>Web App Kalkulus Dgn Python</title>
 {% endblock title %}
 {{ self.title() }}
     Home
@@ -99,7 +99,7 @@ Z_z = FrameWeb_bawah
 
 # @app.route('/')
 # def hello_daa():
-#    return 'Hello Students | Koding Desain dan Analisis Algoritma (DAA) pada Teknologi Cloud :D'
+#    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
 # from re import M
 
