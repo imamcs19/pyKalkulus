@@ -101,273 +101,54 @@ Z_z = FrameWeb_bawah
 # def hello_daa():
 #    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
-# from re import M
+# mencoba memuat fungsi untuk cek apakan
+# bilangan yang dimasukkan merupakan bilangan integer (bulat) atau Float
+def Cek_Int_atau_Bulat_vs_Float(bilangan):
+    f = float(bilangan)
+    if f == int(f):
+        return "Bilangan Integer atau Bilangan Bulat"
+    else:
+        return "Bilangan Float"
 
-def listToString(aList):
-  return ''.join(str(aList))
+@app.route('/int_vs_float', methods=["POST", "GET"])
+def int_vs_float():
 
-import random
-import numpy as np
-
-MIN_MERGE = 32
-
-def calcMinRun(n):
-    r = 0
-    while n >= MIN_MERGE:
-        r |= n & 1
-        n >>= 1
-    return n + r
-
-def insertionSort(arr, left, right):
-    for i in range(left + 1, right + 1):
-        j = i
-        while j > left and arr[j] < arr[j - 1]:
-            arr[j], arr[j - 1] = arr[j - 1], arr[j]
-            j -= 1
-
-
-def merge(arr, l, m, r):
-
-    len1, len2 = m - l + 1, r - m
-    left, right = [], []
-    for i in range(0, len1):
-        left.append(arr[l + i])
-    for i in range(0, len2):
-        right.append(arr[m + 1 + i])
-
-    i, j, k = 0, 0, l
-
-    while i < len1 and j < len2:
-        if left[i] <= right[j]:
-            arr[k] = left[i]
-            i += 1
-
-        else:
-            arr[k] = right[j]
-            j += 1
-
-        k += 1
-
-    while i < len1:
-        arr[k] = left[i]
-        k += 1
-        i += 1
-
-    while j < len2:
-        arr[k] = right[j]
-        k += 1
-        j += 1
-
-def timSort(arr):
-    n = len(arr)
-    minRun = calcMinRun(n)
-
-
-    for start in range(0, n, minRun):
-        end = min(start + minRun - 1, n - 1)
-        insertionSort(arr, start, end)
-
-    size = minRun
-    while size < n:
-
-        for left in range(0, n, 2 * size):
-
-            mid = min(n - 1, left + size - 1)
-            right = min((left + 2 * size - 1), (n - 1))
-
-
-            if mid < right:
-                merge(arr, left, mid, right)
-
-        size = 2 * size
-
-    return arr
-
-@app.route('/code_timsort', methods=['GET'])
-def code_timsort():
-    # a = 12
-    # b = 7
-    # return str(a+b)
-
-    import time
-    import os.path
-
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-    template_view = '''
+    template_view_1 = '''
             <!--- <html> --->
             <!--- <head> --->
             <!--- </head> --->
             <!--- <body> --->
-            <h2>
-                <p style="text-decoration: underline;">
-                  Log Analisis Algoritma Timsort dgn Timer:
-                </p>
-            </h2>
                   <form method="post">
-                   {%for data_get in data_sblm_stlh %}
-                    Input Size (N) = {{ loop.index }}
-                    <br>
-                    Data Sebelum di-Sorting: <br>
-                    {{ data_get[0] }}
-                    <br>
-                    Data Setelah di-Sorting: <br>
-                    {{ data_get[1] }}
-                    <br><br>
-                   {%endfor%}
+                    Masukkan bilangan = <input type="text" name="a" value="{{a_post}}" />
+                    <input type="submit" value="Cek Tipe Bilangan"/>
                   </form>
-                  <h2>Hasil:  </h2>
-                  {% for data_hasil in hasil  %}
-                    {{ data_hasil }}
-                    <br>
-                  {% endfor %}
-
-                  <h2>Plot Waktu by Timer:  </h2>
-                  <img src={{url_image}} alt="Chart" height="480" width="640">
-                  <br>
-                  <img src={{image_timer}} alt="Chart" height="480" width="640">
-
+                  <h2>Hasil Pengecekan, bilangan tersebut merupakan {{ hasil }} </h2>
             <!--- </body> --->
             <!--- </html> --->
         '''
 
+    template_view_2 = '''
+            <!--- <html> --->
+            <!--- <head> --->
+            <!--- </head> --->
+            <!--- <body> --->
+                  <form action="/int_vs_float" method="post">
+                    Masukkan bilangan = <input type="text" name="a" value="" />
+                     <input type="submit" value="Cek Tipe Bilangan"/>
+                  </form>
+            <!--- </body> --->
+            <!--- </html> --->
+        '''
 
-    input_size = 10
-    array_waktu_dalam_detik = np.zeros([input_size,2])
-    data_sblm_sort = []
-    data_stlh_sort = []
-    for i in range(input_size):
-        randomData = random.sample(range(0, 1000), (i+1))
-        data_sblm_sort.append(listToString(randomData))
-        start_time = time.time()
-        listData = randomData
+    if request.method == 'POST': # dioperasikan dihalaman sendiri tanpa send ke route, misal /int_vs_float
 
-        # print(f'Data sebelum sorted : {stringToFloat}')
-        timSort(listData) # bisa diganti dengan fibo/ unique element
-        # print(f'Data setelah sorted : {listData}')
+        bil = request.form['a']
+        hasil = Cek_Int_atau_Bulat_vs_Float(bil)
 
-        y = (len(listData)) - 1
+        return render_template_string(A_a+template_view_1+Z_z, a_post = bil, hasil = hasil)
 
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-
-        data_stlh_sort.append(listToString(listData))
-
-
-        # print('Waktu dengan Timer (detik): ', elapsed_time, ' vs Waktu dengan T(n) = ',(i+1), 'Log (',(i+1),'): ', (i+1)*np.log2(i+1))
-        np.set_printoptions(suppress=True)
-        array_waktu_dalam_detik[i][0] = round((i+1),0)
-        array_waktu_dalam_detik[i][1] = round(elapsed_time,6)
-        #print()
-
-        hasil = []
-        for idx, time_val in enumerate(list(array_waktu_dalam_detik[:,1])):
-            hasil.append('Input Size (N) = ' + str(idx+1) + ', dgn waktu  ' +str('{0:.10f}'.format(time_val)) + ' (detik)')
-
-    # plot hasil waktunya
-    n=list(range(1,input_size+1))
-
-    # Cara ke-1
-    # Generate plot
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    axis.set_title("Plot Waktu by Timer Alg. Timsort")
-    axis.set_xlabel("Banyak Data (N)")
-    axis.set_ylabel("Waktu Komputasi")
-    axis.grid()
-    axis.plot(n, [x*math.log(x,2) for x in n], 'r.-', label='TimSort by T(n)')
-    axis.plot(n,list(array_waktu_dalam_detik[:,1][:len(n)]), 'go-', label='TimSort by Timer')
-    # axis.plot(range(5), range(5), "ro-")
-
-    # legend = axis.legend(loc='upper center', shadow=True, fontsize='x-large')
-
-    # # Put a nicer background color on the legend.
-    # legend.get_frame().set_facecolor('C0')
-
-    axis.legend(loc="upper left")
-
-    # Convert plot to PNG image
-    pngImage = io.BytesIO()
-    FigureCanvas(fig).print_png(pngImage)
-
-    # Encode PNG image to base64 string
-    pngImageB64String = "data:image/png;base64,"
-    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
-
-    # Cara ke-2
-    # simpan dalam path + nama file /static/img/new_timer.png
-    url_simpan = "static/img/new_timer.png"
-
-    fig = plt.figure()
-    # plt.plot(n, [math.log(x,2) for x in n], 'g.-', label='logN') # logN
-    # plt.plot(n, n, 'b.-', label='N') # N
-    plt.plot(n, [x*math.log(x,2) for x in n], 'r.-', label='TimSort by T(n)') # NlogN
-    # plt.plot(n, [x*x for x in n], 'r.-') # N^2
-    # plt.plot(n, [x*x*x for x in n], 'r.-') # N^3
-    # plt.plot(n, [math.pow(2,x) for x in n], 'r.-') # 2^N
-    # plt.plot(n, [math.factorial(x) for x in n], 'r.-') # N!
-    plt.plot(n,list(array_waktu_dalam_detik[:,1][:len(n)]), 'g.-', label='TimSort by Timer') # TimSort
-
-    plt.xlabel('Banyak Data (N)')
-    plt.ylabel('Waktu Komputasi')
-    plt.legend(loc="upper left")
-    plt.show()
-
-    url_file_image_simpan = os.path.join(BASE_DIR, url_simpan)
-    plt.savefig(url_file_image_simpan)
-
-    # Cara ke-3
-    # /bokeh
-
-
-    # return hasil
-    return render_template_string(A_a+template_view+Z_z, data_sblm_stlh = zip(data_sblm_sort, data_stlh_sort), hasil = hasil, image_timer = pngImageB64String, url_image = url_simpan)
-
-@app.route('/bokeh')
-def bokeh():
-    # init a basic bar chart:
-    # http://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#bars
-    fig = figure(plot_width=300, plot_height=300)
-    fig.vbar(
-        x=[1, 2, 3, 4],
-        width=0.5,
-        bottom=0,
-        top=[1.7, 2.2, 4.6, 3.9],
-        color='navy'
-    )
-
-    # grab the static resources
-    js_resources = INLINE.render_js()
-    css_resources = INLINE.render_css()
-
-    template_view ='''
-    <!-- <!doctype html> -->
-    <!-- <html lang="en"> -->
-    <!--  <head> -->
-        <meta charset="utf-8">
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <title>Embed Demo</title>
-        {{ js_resources|indent(4)|safe }}
-        {{ css_resources|indent(4)|safe }}
-        {{ plot_script|indent(4)|safe }}
-    <!--  </head> -->
-    <!--  <body> -->
-        {{ plot_div|indent(4)|safe }}
-    <!--  </body> -->
-    <!-- </html> -->
-    '''
-
-    # render template
-    script, div = components(fig)
-    html = render_template_string(
-        A_a+template_view+Z_z,
-        plot_script=script,
-        plot_div=div,
-        js_resources=js_resources,
-        css_resources=css_resources,
-    )
-
-    return html
+    else: # untuk yang 'GET' data awal untuk di send ke /int_vs_float
+        return render_template_string(A_a+template_view_2+Z_z)
 
 @app.route('/db/<aksi>')
 def manipulate_tabel(aksi):
