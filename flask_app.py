@@ -98,7 +98,7 @@ FrameWeb_bawah = """
 Z_z = FrameWeb_bawah
 
 # @app.route('/')
-# def hello_daa():
+# def hello_kalkulus():
 #    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
 # mencoba memuat fungsi untuk cek apakan

@@ -1,14 +1,17 @@
-Cara ke-1:
-1. Link download File Master webapp DAA Kelas H, ketikkan
+Cara Instalasi Web App:
+-----------------------
+1. Register ke PythonAnywhere, buat Flask App, (ikuti petunjuk pada link https://bit.ly/3RgDNex ), lalu masuk Menu console, klik Bash dan ikuti langkah berikut.
+
+2. Download File Master webapp Kalkulus Kelas DEF, ketikkan
 —---------------
-$ git clone https://github.com/imamcs19/pyDAA.git
+$ git clone https://github.com/imamcs19/pyKalkulus.git
 
-2. Lalu ketikkan 
+3. Lalu ketikkan 
 ------------------
-$mv ./pyDAA/* ./mysite
-, lalu tekan Reload
+$ mv ./pyKalkulus/* ./mysite
+$ pip install -r ./mysite/requirements.txt
 
-3. pip install -r ./mysite/requirements.txt
+, lalu pada menu Web, tekan Reload
 
 4. coba masuk ke halaman Web App Anda, misal pada https://userAnda.pythonanywhere.com
 
