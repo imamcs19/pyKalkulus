@@ -101,6 +101,149 @@ Z_z = FrameWeb_bawah
 # def hello_kalkulus():
 #    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
+@app.route('/pert_9_1', methods=["POST", "GET"])
+def pert_9_1():
+
+    # Koding ini Berdasarkan Materi "Penggunaan Turunan Matrik" utk Generative Modelling
+    import numpy as np
+
+    # Ket. X
+    # misal menyatakan berapa jam waktu belajar dlm 3 hari,
+    # Kolom ke-1 adalah hari ke-1 (x1), .., Kolom ke-3 adalah hari ke-3 (x3)
+
+    # Mengisi data pada Matriks X
+    X = np.array([
+           [ 2.,  3.,  1.],
+           [ 3.,  3.,  5.],
+           [ 5.,  6.,  4.],
+           [ 7.,  8.,  10.],
+           [ 9.,  10.,  12.]
+           ])
+
+    # Dan Y
+    # Kolom ke-1 menyatakan banyaknya materi kalkulus yg berhasil dipahami
+    # Kolom ke-2 menyatakan rangking di kelas
+    # Mengisi data pada Matriks Y
+    Y = np.array([
+           [ 4.,  1.],
+           [ 5.,  2.],
+           [ 7.,  3.],
+           [ 10.,  4.],
+           [ 15.,  5.]
+           ])
+
+    # Menampilkan X dan Y
+    # print("Menampilkan X sbg Input:")
+    # print(X)
+    # print()
+    # print("Menampilkan Y sbg Output:")
+    # print(Y)
+
+    # Hitung Matrik Beta (B)
+    B = np.linalg.inv(np.transpose(X).dot(X)).dot(np.transpose(X)).dot(Y)
+    # print("Hitung Matrik Beta (B)")
+    # print(B)
+    # B[:,0]=np.clip(B[:,0], 1, 15)
+    # B[:,1]=np.clip(B[:,1], 1, 10)
+
+    # print()
+    # print("Hitung Matrik Beta (B) dgn clip")
+    # print(B)
+
+    # Memasukkan data uji (Xuji)
+    Xuji = np.array([
+           [ 2.,  3.,  1.],
+           [ 3.,  3.,  5.]
+           ])
+    # print(Xuji)
+
+    # Menghitung Hasil Output Ytopi dari inputan Xuji
+    # Kolom ke-1 menyatakan banyaknya materi kalkulus yg berhasil dipahami
+    # Kolom ke-2 menyatakan rangking di kelas
+    Ytopi = Xuji.dot(B)
+
+    # Agar angkanya menjadi bulat, maka dibulatkan ke atas
+    Ytopi = np.ceil(Ytopi)
+    # [[4. 1.]
+    #  [5. 2.]]
+
+
+    return render_template_string(A_a+str(Ytopi)+Z_z)
+
+@app.route('/contoh_utk_uts_kalkulus_no_4', methods=["POST", "GET"])
+def contoh_utk_uts_kalkulus_no_4():
+
+    # Hitung Lambert w function atau omega function atau productlog
+    # x*(e^x) = a, maka, W(x*(e^x)) = W(a), shg, x = W(a)
+    import numpy as np
+
+    def fn_utk_fn_lambert(x,a):
+        return x*(np.e**x) - a
+
+    def D_fn_utk_fn_lambert(x):
+        # f(x) = x*(e^x) - a
+        # u = x, v=e^x
+        # f'(x) = u'v + v'u
+        # = e^x + x*e^x
+        return np.e**x + x*(np.e**x)
+
+    # Membuat lambert w function / omega function /
+    # productlog base Other function above like Stirling's approximation function
+    def fn_lambert(a): # masih dibatasi untuk a >=0
+        if a ==0:
+            return 0
+        else:
+            # if a > 0:
+            #misal menggunakan newton's method:
+            # init x_n = 1
+            x_n = 1.0
+            epsilon = 0.0001 #utk pembandingan tingkat tolerasi error
+            IterMax = 1000
+            is_ok = True
+            counter = 0
+            while(is_ok):
+                x_n_plus_1 = x_n - (fn_utk_fn_lambert(x_n,a)/D_fn_utk_fn_lambert(x_n))
+                x_n = x_n_plus_1
+                if (abs(fn_utk_fn_lambert(x_n,a))<=epsilon) or counter==IterMax:
+                    is_ok = False
+                # x_n = float(x_n) counter+=1
+            return x_n
+
+        # else:
+            #return 'Masukkan nilai a >=0, karena sbg pembatasan dari koding yg dibuat :D'
+        # return
+
+    def fn_invers_fact(from_n_fact_get_n):
+        val_fn_lambert = \
+        float(fn_lambert((1/(np.e))*(np.log(from_n_fact_get_n/(np.sqrt(2*np.pi))))))
+        val_fn_lambert = float(val_fn_lambert)
+        n_init = np.e*(np.e**( val_fn_lambert ))-0.5
+        n = 0 if np.isnan(n_init) else n_init
+
+        if(fac(int(np.ceil(n)))==from_n_fact_get_n):
+            n = int(np.ceil(n))
+        return n
+
+    def fac(n):
+        if n == 0 or n == 1:
+            return 1
+        else:
+            hasil_fac=1
+            for _ in range(n):
+                hasil_fac *=(_+1)
+
+            return hasil_fac
+
+    hasil_x_for_x_e_pow_x_minus_2_equal_zero = fn_lambert(2)
+    # Output 0.8526055263689221
+    hasil_n_for_n_faktorial_equal_x = fn_invers_fact(22/7)
+    # Output 2.4359820320554704
+
+    # return str(hasil_x_for_x_e_pow_x_minus_2_equal_zero)+'<br>'+str(hasil_n_for_n_faktorial_equal_x)
+    # <br> untuk new line
+    return render_template_string(A_a+'Hasil x untuk x*(e^x) = 2, x = '+str(hasil_x_for_x_e_pow_x_minus_2_equal_zero)+'<br><br>'+\
+    'Hasil n untuk n! = 22/7, n = '+str(hasil_n_for_n_faktorial_equal_x)+Z_z)
+
 def Cek_Genap_Ganjil(bilangan):
     if(float(bilangan)%2==0):
         return "Bilangan Genap"
