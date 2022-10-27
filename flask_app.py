@@ -101,6 +101,53 @@ Z_z = FrameWeb_bawah
 # def hello_kalkulus():
 #    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
+@app.route('/pert_9_lat', methods=["POST", "GET"])
+def pert_9_lat():
+
+    # Koding ini Berdasarkan Materi "Penggunaan Turunan Matrik" utk Generative Modelling
+    import numpy as np
+
+    # Mengisi data pada Matriks X
+    X = np.array([
+           [ 2.,  3.,  1., 0.5],
+           [ 3.,  3.,  5., 2.],
+           [ 5.,  6.,  4., 40.],
+           [ 7.,  8.,  10., 80.],
+           [ 9.,  10.,  12., 150.]
+           ])
+
+    # Mengisi data pada Matriks Y
+    Y = np.array([
+           [ 4.,  5.],
+           [ 5.,  4.],
+           [ 7.,  3.],
+           [ 10.,  2.],
+           [ 15.,  1.]
+           ])
+
+    # Hitung Matrik Beta (B)
+    B = np.linalg.inv(np.transpose(X).dot(X)).dot(np.transpose(X)).dot(Y)
+
+    # Memasukkan data uji (Xuji)
+    Xuji = np.array([
+           [ 10.,  10.,  10., 1000.]
+           ])
+
+    # Menghitung Hasil Output Ytopi dari inputan Xuji
+    Ytopi = Xuji.dot(B)
+
+    Ytopi_awal = Ytopi.copy()
+
+    # Agar angkanya menjadi bulat, maka dibulatkan ke atas
+    Ytopi = np.ceil(Ytopi)
+
+
+    # yang nilainya < 0, set = 0
+    Ytopi[Ytopi < 0] = 0
+
+
+    return render_template_string(A_a+str(Ytopi_awal)+" <br> Hasil setelah diset yg kurang dari nol = 0" + str(Ytopi) +Z_z)
+
 @app.route('/pert_9_1', methods=["POST", "GET"])
 def pert_9_1():
 
