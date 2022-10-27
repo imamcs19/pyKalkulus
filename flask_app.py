@@ -291,17 +291,56 @@ def contoh_utk_uts_kalkulus_no_4():
     return render_template_string(A_a+'Hasil x untuk x*(e^x) = 2, x = '+str(hasil_x_for_x_e_pow_x_minus_2_equal_zero)+'<br><br>'+\
     'Hasil n untuk n! = 22/7, n = '+str(hasil_n_for_n_faktorial_equal_x)+Z_z)
 
-    # petunjuk untuk LIATE, yaitu  L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential ,
-    # misal untuk yang trigonometri sin dan cos
+    # petunjuk untuk LIATE, yaitu  L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential,
+    # misal untuk yang trigonometri sin dan cos, dan lainnya
     # import numpy as np
+    # #
+    # # Kepanjangan dari LIATE, yaitu Log, Invers-Trigonometri, Aljabar, Trigonometri dan Exponential
+    # #
+    # # hitung log_e(0) atau setara dengan logaritma natural ln(0)
+    # print(np.log(np.exp(0)))
+
+    # # hitung log_2(8)
+    # print(np.log(8)/np.log(2))
+
+    # # hitung log_10(100)
+    # print(np.log(100)/np.log(10))
+
     # x = 0.8526055263689221
     # hasil = x*np.exp(x)
     # print(hasil)
+
+    # # contoh hitung Invers-Trigonometri
+    # print(np.arcsin(np.arccos(0.7)))
+
+    # # hitung aljabar linear
+    # from sympy import *
+    # x,y=symbols('x,y')
+
+    # eq1 = 2*x + 5*y - 6
+    # eq2 = 3*x + 7*y - 12
+
+
+    # res = solve((eq1, eq2), dict=True)
+    # print(res)
+
+    # # hitung aljabar untuk hasil akar persaman kuadrat
+    # from sympy import symbols, Eq, solve
+    # y = symbols('x')
+    # eq1 = Eq(x**2 - 5*x + 6, 0)
+
+    # sol = solve(eq1)
+    # # cara akses nilai hasilnya
+    # print('[ ',float(sol[0]),' , ', float(sol[1]), ' ]')
+
+    # # hitung Trigonometri
     # print(np.sin(np.deg2rad(180)))
     # print(np.sin(np.pi))
     # print(np.rad2deg(22/7))
     # print(np.sin(np.cos(0.7)))
-    # print(np.arcsin(np.arccos(0.7)))
+
+    # # hitung Exponential
+    # print(2*np.exp(5))
 
 def Cek_Genap_Ganjil(bilangan):
     if(float(bilangan)%2==0):
