@@ -291,6 +291,18 @@ def contoh_utk_uts_kalkulus_no_4():
     return render_template_string(A_a+'Hasil x untuk x*(e^x) = 2, x = '+str(hasil_x_for_x_e_pow_x_minus_2_equal_zero)+'<br><br>'+\
     'Hasil n untuk n! = 22/7, n = '+str(hasil_n_for_n_faktorial_equal_x)+Z_z)
 
+    # petunjuk untuk LIATE, yaitu  L = Log, I = Inverse Trig, A = Algebraic, T = Trigonometric, E = Exponential ,
+    # misal untuk yang trigonometri sin dan cos
+    # import numpy as np
+    # x = 0.8526055263689221
+    # hasil = x*np.exp(x)
+    # print(hasil)
+    # print(np.sin(np.deg2rad(180)))
+    # print(np.sin(np.pi))
+    # print(np.rad2deg(22/7))
+    # print(np.sin(np.cos(0.7)))
+    # print(np.arcsin(np.arccos(0.7)))
+
 def Cek_Genap_Ganjil(bilangan):
     if(float(bilangan)%2==0):
         return "Bilangan Genap"
