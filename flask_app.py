@@ -101,6 +101,222 @@ Z_z = FrameWeb_bawah
 # def hello_kalkulus():
 #    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
+@app.route("/testView_dari_project2", methods=['GET', 'POST'])
+def testView_dari_project2():
+
+    if request.method == 'POST': # dioperasikan dihalaman sendiri tanpa send ke route, misal /testView_dari_project2
+
+        var1_in = float(request.form['var1'])
+        var2_in = request.form['var2']
+        var3_in = request.form['var3']
+        c = 2*var1_in
+
+        template_view = '''
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Prediksi Hasil Pengujian (misal ambil contoh dari topik Kel. 4: topik pembuatan model data aktifitas harian (1 x 24 jam) mhs sukses (x1, x2, .., x6) untuk prediksi jenis pekerjaan (y1) & ipk akhir (y2)): </h3>
+                            <p class="text-muted m-b-30 font-13"> masukkan nilai parameter Anda </p>
+                            <form action="/testView_dari_project2" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x1 = 03.00 - 07.00*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var1" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x2 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var2" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x3 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x4 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x5 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x6 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-0">
+                                    <div class="col-sm-offset-3 col-sm-9 text-right">
+                                        <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Hitung Hasil Prediksi</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="white-box row">
+                            <h3 class="box-title m-b-0">Estimasi hasil prediksinya adalah </h3>
+                            {% if c_save is defined and c_save %}
+                            <p class="text-muted m-b-30 font-13"> Nilai Skor Jenis Pekerjaan (y1) = {{c_save}} </p>
+                            <p class="text-muted m-b-30 font-13"> Nilai Skor IPK Akhir (y2) = {{c_save}} </p>
+                            {% endif %}
+                            <div class="mt-8">
+                                {% if var1 is defined and var1 %}
+                                <p>x1: {{var1}}</p>
+                                <p>x2: {{var2}}</p>
+                                <p>x3: {{var3}}</p>
+                                <p>x4: {{var3}}</p>
+                                <p>x5: {{var3}}</p>
+                                <p>x6: {{var3}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="white-box mt-8 row">
+                    <div class="justify-around bg-white rounded-lg">
+                            <img class="col-md-3 col-xs-12" src="{{ url_for('static', filename = 'img/filkom.png') }}" alt="logo-filkom">
+                            <img class="col-md-3 col-xs-12" src="{{ url_for('static', filename = 'img/conan.jpg') }}" alt="kartun-conan">
+                    </div>
+                     </div>
+                    </div>
+                </div>
+        '''
+
+        return render_template_string(A_a+template_view+Z_z, var1 = var1_in, var2 = var2_in, var3 = var3_in, c_save = c)
+
+    else: # untuk yang 'GET' data awal untuk di send ke /testView_dari_project2
+
+        template_view = '''
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Prediksi Hasil Pengujian (misal ambil contoh dari topik Kel. 4: topik pembuatan model data aktifitas harian (1 x 24 jam) mhs sukses (x1, x2, .., x6) untuk prediksi jenis pekerjaan (y1) & ipk akhir (y2)): </h3>
+                            <p class="text-muted m-b-30 font-13"> masukkan nilai parameter Anda </p>
+                            <form action="/testView_dari_project2" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x1 = 03.00 - 07.00*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var1" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x2 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var2" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x3 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x4 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x5 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">x6 = ..*</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" name="var3" {% if var1 is defined and var1 %} value="{{var1}}" {% else %} value="" {% endif %} class="form-control" id="exampleInputuname" placeholder="Skor" required="required">
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-0">
+                                    <div class="col-sm-offset-3 col-sm-9 text-right">
+                                        <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Hitung Hasil Prediksi</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="white-box row">
+                            <h3 class="box-title m-b-0">Estimasi hasil prediksinya adalah </h3>
+                            {% if c_save is defined and c_save %}
+                            <p class="text-muted m-b-30 font-13"> Nilai Skor Jenis Pekerjaan (y1) = {{c_save}} </p>
+                            <p class="text-muted m-b-30 font-13"> Nilai Skor IPK Akhir (y2) = {{c_save}} </p>
+                            {% endif %}
+                            <div class="mt-8">
+                                {% if var1 is defined and var1 %}
+                                <p>x1: {{var1}}</p>
+                                <p>x2: {{var2}}</p>
+                                <p>x3: {{var3}}</p>
+                                <p>x4: {{var3}}</p>
+                                <p>x5: {{var3}}</p>
+                                <p>x6: {{var3}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="white-box mt-8 row">
+                    <div class="justify-around bg-white rounded-lg">
+                            <img class="col-md-3 col-xs-12" src="{{ url_for('static', filename = 'img/filkom.png') }}" alt="logo-filkom">
+                            <img class="col-md-3 col-xs-12" src="{{ url_for('static', filename = 'img/conan.jpg') }}" alt="kartun-conan">
+                    </div>
+                     </div>
+                    </div>
+                </div>
+        '''
+
+        return render_template_string(A_a+template_view+Z_z)
+
 @app.route('/pert_9_lat', methods=["POST", "GET"])
 def pert_9_lat():
 
