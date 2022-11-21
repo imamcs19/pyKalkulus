@@ -460,7 +460,7 @@ def contoh_utk_uts_kalkulus_no_4():
     # # Kepanjangan dari LIATE, yaitu Log, Invers-Trigonometri, Aljabar, Trigonometri dan Exponential
     # #
     # # hitung log_e(0) atau setara dengan logaritma natural ln(0)
-    # print(np.log(np.exp(0)))
+    # print(np.log(0))
 
     # # hitung log_2(8)
     # print(np.log(8)/np.log(2))
