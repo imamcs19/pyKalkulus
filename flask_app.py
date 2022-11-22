@@ -101,8 +101,8 @@ Z_z = FrameWeb_bawah
 # def hello_kalkulus():
 #    return 'Hello Students | Koding Kalkulus pada Teknologi Cloud :D'
 
-@app.route("/testView_dari_project2", methods=['GET', 'POST'])
-def testView_dari_project2():
+@app.route("/testView_dari_project2_sbg_fp", methods=['GET', 'POST'])
+def testView_dari_project2_sbg_fp():
 
     template_view = '''
         <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
@@ -111,7 +111,7 @@ def testView_dari_project2():
                     <div class="white-box">
                         <h3 class="box-title m-b-0">Prediksi Hasil Pengujian (misal ambil contoh dari topik Project 2 Kel. Anda): </h3>
                         <p class="text-muted m-b-30 font-13"> masukkan nilai parameter Anda </p>
-                        <form action="/testView_dari_project2" method="post" class="form-horizontal">
+                        <form action="/testView_dari_project2_sbg_fp" method="post" class="form-horizontal">
                             <div class="form-group">
                                 <label for="exampleInputuname" class="col-sm-9 control-label">x1 = Suhu badan*</label>
                                 <div class="col-sm-2">
@@ -199,7 +199,7 @@ def testView_dari_project2():
             </div>
     '''
 
-    if request.method == 'POST': # dioperasikan dihalaman sendiri tanpa send ke route, misal /testView_dari_project2
+    if request.method == 'POST': # dioperasikan dihalaman sendiri tanpa send ke route, misal /testView_dari_project2_sbg_fp
 
         import numpy as np
 
@@ -260,7 +260,7 @@ def testView_dari_project2():
         var2 = var2_in, var3 = var3_in, var4 = var4_in, var5 = var5_in,
         var6 = var6_in, var7 = var7_in, c_save = list(hitung_y_bar), c_save_round = list(hitung_y_bar_round))
 
-    else: # untuk yang 'GET' data awal untuk di send ke /testView_dari_project2
+    else: # untuk yang 'GET' data awal untuk di send ke /testView_dari_project2_sbg_fp
         return render_template_string(A_a+template_view+Z_z)
 
 @app.route('/pert_9_lat', methods=["POST", "GET"])
